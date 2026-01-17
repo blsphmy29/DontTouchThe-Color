@@ -21,7 +21,7 @@ namespace DontTouchThe_Color
         public StartForm()
         {
             InitializeComponent();
-            this.Size = new Size(400, 400);
+            this.Size = new Size(620, 450);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Don't Touch The Color";
 
