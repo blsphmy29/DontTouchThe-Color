@@ -15,7 +15,7 @@ namespace DontTouchThe_Color
         Random rnd = new Random();
         Button[] colorButtons;
         Color forbiddenColor;
-        Label lblScore;
+        Label labelScore;
         int score = 0;
 
         public StartForm()
@@ -32,23 +32,23 @@ namespace DontTouchThe_Color
         private void SetupGame()
         {
             // Score label
-            lblScore = new Label();
-            lblScore.Text = "Score: 0";
-            lblScore.Font = new Font("Arial", 16);
-            lblScore.AutoSize = true;
-            lblScore.Location = new Point(150, 20);
-            this.Controls.Add(lblScore);
+            labelScore = new Label();
+            labelScore.Text = "Score: 0";
+            labelScore.Font = new Font("Arial", 16);
+            labelScore.AutoSize = true;
+            labelScore.Location = new Point(150, 20);
+            this.Controls.Add(labelScore);
 
             // Create 4 buttons
             colorButtons = new Button[4];
             for (int i = 0; i < 4; i++)
             {
-                Button btn = new Button();
-                btn.Size = new Size(80, 80);
-                btn.Location = new Point(50 + (i % 2) * 120, 100 + (i / 2) * 120);
-                btn.Click += ColorButton_Click;
-                colorButtons[i] = btn;
-                this.Controls.Add(btn);
+                Button button = new Button();
+                button.Size = new Size(80, 80);
+                button.Location = new Point(50 + (i % 2) * 120, 100 + (i / 2) * 120);
+                button.Click += ColorButton_Click;
+                colorButtons[i] = button;
+                this.Controls.Add(button);
             }
         }
 
@@ -92,7 +92,7 @@ namespace DontTouchThe_Color
                 score++;
             }
 
-            lblScore.Text = "Score: " + score;
+            labelScore.Text = "Score: " + score;
             NextRound();
         }
     }
