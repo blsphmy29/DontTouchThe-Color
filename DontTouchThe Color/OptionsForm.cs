@@ -17,11 +17,5 @@ namespace DontTouchThe_Color
             InitializeComponent();
         }
 
-        private void toMainMenu_Click(object sender, EventArgs e)
-        {
-            mainMenu toMainMenu = new mainMenu();
-            toMainMenu.Show();
-            this.Close();
-        }
     }
 }
