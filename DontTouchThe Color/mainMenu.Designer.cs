@@ -122,6 +122,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.screenPanel);
             this.Controls.Add(this.menuPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "mainMenu";
             this.Text = "Don\'t touch the color";

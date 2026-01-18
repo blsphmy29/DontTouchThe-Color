@@ -12,10 +12,11 @@ namespace DontTouchThe_Color
 {
     public partial class StartForm : Form
     {
-        Random rnd = new Random();
+        Random random = new Random();
         Button[] colorButtons;
         Color forbiddenColor;
         Label labelScore;
+        Label labelInstruction;
         int score = 0;
 
         public StartForm()
@@ -36,16 +37,24 @@ namespace DontTouchThe_Color
             labelScore.Text = "Score: 0";
             labelScore.Font = new Font("Arial", 16);
             labelScore.AutoSize = true;
-            labelScore.Location = new Point(150, 20);
+            labelScore.Location = new Point(20, 20);
             this.Controls.Add(labelScore);
 
-            // Create 4 buttons
-            colorButtons = new Button[4];
-            for (int i = 0; i < 4; i++)
+            // Instruction label
+            labelInstruction = new Label();
+            labelInstruction.Font = new Font("Arial", 16);
+            labelInstruction.AutoSize = true;
+            labelInstruction.Location = new Point(20, 60);
+            labelInstruction.ForeColor = Color.Black;
+            this.Controls.Add(labelInstruction);
+
+            // Create 6 buttons
+            colorButtons = new Button[6];
+            for (int i = 0; i < 6; i++)
             {
                 Button button = new Button();
-                button.Size = new Size(80, 80);
-                button.Location = new Point(50 + (i % 2) * 120, 100 + (i / 2) * 120);
+                button.Size = new Size(100, 100);
+                button.Location = new Point(20 + (i % 2) * 120, 100 + (i / 2) * 120);
                 button.Click += ColorButton_Click;
                 colorButtons[i] = button;
                 this.Controls.Add(button);
@@ -56,6 +65,8 @@ namespace DontTouchThe_Color
         {
             // Pick a forbidden color
             forbiddenColor = GetRandomColor();
+            labelInstruction.Text = "Don't touch the color " + forbiddenColor.Name.ToLower() + ".";
+            labelInstruction.ForeColor = forbiddenColor;
 
             // Assign random colors to buttons
             foreach (Button btn in colorButtons)
@@ -69,14 +80,14 @@ namespace DontTouchThe_Color
             }
 
             // Randomly assign forbidden color to one button
-            int forbiddenIndex = rnd.Next(colorButtons.Length);
+            int forbiddenIndex = random.Next(colorButtons.Length);
             colorButtons[forbiddenIndex].BackColor = forbiddenColor;
         }
 
         private Color GetRandomColor()
         {
-            Color[] colors = new Color[] { Color.Red, Color.Green, Color.Blue, Color.Yellow };
-            return colors[rnd.Next(colors.Length)];
+            Color[] colors = new Color[] { Color.Red, Color.Blue, Color.Yellow, Color.Green, Color.Orange, Color.Violet};
+            return colors[random.Next(colors.Length)];
         }
 
         private void ColorButton_Click(object sender, EventArgs e)
