@@ -17,7 +17,10 @@ namespace DontTouchThe_Color
         Color forbiddenColor;
         Label labelScore;
         Label labelInstruction;
+        Label labelTimer;
+        Timer gameTimer;
         int score = 0;
+        int timeLeft = 10;
 
         public StartForm()
         {
@@ -48,16 +51,66 @@ namespace DontTouchThe_Color
             labelInstruction.ForeColor = Color.Black;
             this.Controls.Add(labelInstruction);
 
-            // Create 6 buttons
-            colorButtons = new Button[6];
-            for (int i = 0; i < 6; i++)
+            // Timer label
+            labelTimer = new Label();
+            labelTimer.Text = "Time: 10";
+            labelTimer.Font = new Font("Arial", 16);
+            labelTimer.AutoSize = true;
+            labelTimer.Location = new Point(250, 20);
+            this.Controls.Add(labelTimer);
+
+            gameTimer = new Timer();
+            gameTimer.Interval = 1000; // 1 second
+            gameTimer.Tick += GameTimer_Tick;
+            gameTimer.Start();
+
+            // Create 9 buttons
+            colorButtons = new Button[9];
+
+            int startX = 25;
+            int startY = 100;
+            int spacing = 120;
+
+
+            for (int i = 0; i < 9; i++)
             {
                 Button button = new Button();
                 button.Size = new Size(100, 100);
-                button.Location = new Point(20 + (i % 2) * 120, 100 + (i / 2) * 120);
+
+                int col = i % 3;   // 0,1,2
+                int row = i / 3;   // 0,1,2
+
+                button.Location = new Point(
+                    startX + col * spacing,
+                    startY + row * spacing
+                );
+
                 button.Click += ColorButton_Click;
                 colorButtons[i] = button;
                 this.Controls.Add(button);
+            }
+        }
+
+        private void ResetGame()
+        {
+            score = 0;
+            timeLeft = 10;
+            labelScore.Text = "Score: 0";
+            labelTimer.Text = "Time: 10";
+            gameTimer.Start();
+            NextRound();
+        }
+
+        private void GameTimer_Tick(object sender, EventArgs e)
+        {
+            timeLeft--;
+            labelTimer.Text = "Time: " + timeLeft;
+
+            if (timeLeft <= 0)
+            {
+                gameTimer.Stop();
+                MessageBox.Show("Time's up!\nYour score: " + score);
+                ResetGame();
             }
         }
 
@@ -93,17 +146,20 @@ namespace DontTouchThe_Color
         private void ColorButton_Click(object sender, EventArgs e)
         {
             Button clicked = sender as Button;
+
             if (clicked.BackColor == forbiddenColor)
             {
                 MessageBox.Show("Game Over!\nYour score: " + score);
-                score = 0;
+                ResetGame();
             }
             else
             {
                 score++;
+                timeLeft++;
             }
 
             labelScore.Text = "Score: " + score;
+            labelTimer.Text = "Time: " + timeLeft;
             NextRound();
         }
     }
