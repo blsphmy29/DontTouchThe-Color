@@ -42,5 +42,10 @@ namespace DontTouchThe_Color
         {
             Application.Exit();
         }
+
+        private void buttonTimeMode_Click(object sender, EventArgs e)
+        {
+            LoadForm(new TimeModeForm());
+        }
     }
 }

@@ -32,7 +32,7 @@
             this.buttonOptions = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             this.menuPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonTimeMode = new System.Windows.Forms.Button();
             this.screenPanel = new System.Windows.Forms.Panel();
             this.menuPanel.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +84,7 @@
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.menuPanel.Controls.Add(this.button1);
+            this.menuPanel.Controls.Add(this.buttonTimeMode);
             this.menuPanel.Controls.Add(this.buttonExit);
             this.menuPanel.Controls.Add(this.buttonStart);
             this.menuPanel.Controls.Add(this.buttonOptions);
@@ -94,18 +94,19 @@
             this.menuPanel.Size = new System.Drawing.Size(180, 450);
             this.menuPanel.TabIndex = 3;
             // 
-            // button1
+            // buttonTimeMode
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 198);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 80);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Time Mode";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonTimeMode.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonTimeMode.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonTimeMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTimeMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTimeMode.Location = new System.Drawing.Point(0, 198);
+            this.buttonTimeMode.Name = "buttonTimeMode";
+            this.buttonTimeMode.Size = new System.Drawing.Size(180, 80);
+            this.buttonTimeMode.TabIndex = 4;
+            this.buttonTimeMode.Text = "Time Mode";
+            this.buttonTimeMode.UseVisualStyleBackColor = false;
+            this.buttonTimeMode.Click += new System.EventHandler(this.buttonTimeMode_Click);
             // 
             // screenPanel
             // 
@@ -138,7 +139,7 @@
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.Panel screenPanel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonTimeMode;
     }
 }
 

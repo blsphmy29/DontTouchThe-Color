@@ -66,6 +66,12 @@
     <Compile Include="StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TimeModeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeModeForm.Designer.cs">
+      <DependentUpon>TimeModeForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="mainMenu.resx">
       <DependentUpon>mainMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +89,9 @@
     </Compile>
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeModeForm.resx">
+      <DependentUpon>TimeModeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
